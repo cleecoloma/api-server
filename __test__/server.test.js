@@ -28,13 +28,6 @@ describe('Testing the REST Router', () => {
     expect(response.body.message).toEqual('Error 404 - Incorrect Method');
   });
 
-  xtest('Will this return a 500 error', async () => {
-    let response = await request.delete('/api/pet');
-
-    expect(response.status).toEqual(500);
-    expect(response.body.message).toEqual('Server Error');
-  });
-
   test('Should READ pet', async () => {
     let response = await request.get('/api/pet');
 
