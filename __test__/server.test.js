@@ -14,22 +14,36 @@ afterAll(async () => {
 });
 
 describe('Testing the REST Router', () => {
+  test('Will this return a 404 error - bad path', async () => {
+    let response = await request.get('/api/notAnEndpoint');
+
+    expect(response.status).toEqual(404);
+    expect(response.body.message).toEqual('Error 404 - Incorrect Path');
+  });
+
+  test('Will this return a 404 error - bad method', async () => {
+    let response = await request.destroy('/api/pet');
+
+    expect(response.status).toEqual(404);
+    expect(response.body.message).toEqual('Error 404 - Incorrect Method');
+  });
+
+  test('Will this return a 500 error - no id', async () => {
+    let response = await request.post('/api/pet');
+
+    expect(response.status).toEqual(500);
+    expect(response.body.message).toEqual('Server Error');
+  });
+
   test('Should READ pet', async () => {
-    let response = await request.get('/pet');
+    let response = await request.get('/api/pet');
 
     expect(response.status).toEqual(200);
     expect(response.body.results).toBeTruthy();
   });
 
-  test('Will this return a 500/server error', async () => {
-    let response = await request.get('/pet');
-
-    expect(response.status).toEqual(500);
-    expect(response.body.message).toEqual();
-  });
-
   test('Should CREATE pet', async () => {
-    let response = await request.post('/pet').send({
+    let response = await request.post('/api/pet').send({
       name: 'Koko',
       type: 'Shiba Inu',
     });
@@ -40,7 +54,7 @@ describe('Testing the REST Router', () => {
   });
 
   test('Should UPDATE pet', async () => {
-    let response = await request.patch('/pet/1').send({
+    let response = await request.patch('/api/pet/1').send({
       name: 'Jojo',
     });
 
@@ -49,7 +63,7 @@ describe('Testing the REST Router', () => {
   });
 
   test('Should DELETE pet', async () => {
-    let response = await request.delete('/pet/1');
+    let response = await request.delete('/api/pet/1');
 
     expect(response.status).toEqual(204);
   });
@@ -57,14 +71,14 @@ describe('Testing the REST Router', () => {
 
 describe('Testing the REST Router', () => {
   test('Should READ car', async () => {
-    let response = await request.get('/car');
+    let response = await request.get('/api/car');
 
     expect(response.status).toEqual(200);
     expect(response.body.results).toBeTruthy();
   });
 
   test('Should CREATE car', async () => {
-    let response = await request.post('/car').send({
+    let response = await request.post('/api/car').send({
       name: 'Tesla',
       type: 'Model Y',
     });
@@ -75,7 +89,7 @@ describe('Testing the REST Router', () => {
   });
 
   test('Should UPDATE car', async () => {
-    let response = await request.patch('/car/1').send({
+    let response = await request.patch('/api/car/1').send({
       name: 'Toyota',
     });
 
@@ -84,7 +98,7 @@ describe('Testing the REST Router', () => {
   });
 
   test('Should DELETE car', async () => {
-    let response = await request.delete('/car/1');
+    let response = await request.delete('/api/car/1');
 
     expect(response.status).toEqual(204);
   });
@@ -92,14 +106,14 @@ describe('Testing the REST Router', () => {
 
 describe('Testing the REST Router', () => {
   test('Should READ car', async () => {
-    let response = await request.get('/car');
+    let response = await request.get('/api/car');
 
     expect(response.status).toEqual(200);
     expect(response.body.results).toBeTruthy();
   });
 
   test('Should CREATE car', async () => {
-    let response = await request.post('/car').send({
+    let response = await request.post('/api/car').send({
       name: 'Tesla',
       type: 'Model Y',
     });
@@ -110,7 +124,7 @@ describe('Testing the REST Router', () => {
   });
 
   test('Should UPDATE car', async () => {
-    let response = await request.patch('/car/1').send({
+    let response = await request.patch('/api/car/1').send({
       name: 'Toyota',
     });
 
@@ -119,7 +133,7 @@ describe('Testing the REST Router', () => {
   });
 
   test('Should DELETE car', async () => {
-    let response = await request.delete('/car/1');
+    let response = await request.delete('/api/car/1');
 
     expect(response.status).toEqual(204);
   });
