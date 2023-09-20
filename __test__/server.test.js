@@ -21,6 +21,13 @@ describe('Testing the REST Router', () => {
     expect(response.body.results).toBeTruthy();
   });
 
+  test('Will this return a 500/server error', async () => {
+    let response = await request.get('/pet');
+
+    expect(response.status).toEqual(500);
+    expect(response.body.message).toEqual();
+  });
+
   test('Should CREATE pet', async () => {
     let response = await request.post('/pet').send({
       name: 'Koko',
@@ -43,6 +50,41 @@ describe('Testing the REST Router', () => {
 
   test('Should DELETE pet', async () => {
     let response = await request.delete('/pet/1');
+
+    expect(response.status).toEqual(204);
+  });
+});
+
+describe('Testing the REST Router', () => {
+  test('Should READ car', async () => {
+    let response = await request.get('/car');
+
+    expect(response.status).toEqual(200);
+    expect(response.body.results).toBeTruthy();
+  });
+
+  test('Should CREATE car', async () => {
+    let response = await request.post('/car').send({
+      name: 'Tesla',
+      type: 'Model Y',
+    });
+
+    expect(response.status).toEqual(200);
+    expect(response.body.name).toEqual('Tesla');
+    expect(response.body.type).toEqual('Model Y');
+  });
+
+  test('Should UPDATE car', async () => {
+    let response = await request.patch('/car/1').send({
+      name: 'Toyota',
+    });
+
+    expect(response.status).toEqual(200);
+    expect(response.body.name).toEqual('Toyota');
+  });
+
+  test('Should DELETE car', async () => {
+    let response = await request.delete('/car/1');
 
     expect(response.status).toEqual(204);
   });
