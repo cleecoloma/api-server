@@ -19,7 +19,7 @@ Send a request:
 
 ```text
 method: GET || POST || PUT || DELETE
-route: /pet || /pet/:id || /car || /car/:id
+route: /api/pet || /api/pet/:id || /api/car || /api/car/:id
 query:
   name={name_of_car || name_of_pet}
   type={model_of_car || breed_of_pet}
