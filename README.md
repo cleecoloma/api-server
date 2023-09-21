@@ -10,6 +10,7 @@
 
 ```text
 PORT=3001
+SQL_CONNECTION_STRING={SQL_database_link}
 ```
 
 ## Usage
@@ -17,18 +18,19 @@ PORT=3001
 Send a request:
 
 ```text
-method: GET
-route: /person
+method: GET || POST || PUT || DELETE
+route: /pet || /pet/:id || /car || /car/:id
 query:
-  name={nameOfPerson}
+  name={name_of_car || name_of_pet}
+  type={model_of_car || breed_of_pet}
 ```
 
 ## UML Diagram
-![Basic Express Server UML Diagram](./assets/401-class-02-lab.png)
+![Basic Express Server UML Diagram](./assets/401-class-03-lab.png)
 
 ## Deployed link
 > This is deployed on Render at:
-* [Main/Production Branch](https://basic-express-server-svjf.onrender.com)
+* [Main/Production Branch](https://api-server-b4jj.onrender.com)
 
 ## PR link
 [PR link](https://github.com/cleecoloma/basic-express-server/pull/1)
