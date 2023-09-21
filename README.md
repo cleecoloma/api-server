@@ -33,7 +33,7 @@ query:
 * [Main/Production Branch](https://api-server-b4jj.onrender.com)
 
 ## PR link
-[PR link](https://github.com/cleecoloma/basic-express-server/pull/1)
+[PR link](https://github.com/cleecoloma/api-server/pull/1)
 
 ## Contributors
 > Chester Lee Coloma
