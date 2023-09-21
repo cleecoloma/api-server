@@ -1,6 +1,6 @@
 # API Server
 
->  Building express server using best practices, including server modularization, use of middleware, and tests.
+>  Build a REST API using Express, by creating a proper series of endpoints that perform CRUD
 
 ## Installation
 
