@@ -20,13 +20,13 @@ describe('Testing the Model Associations', () => {
     });
     pet = await PetModel.create({
       name: 'Koko',
-      customerId: person.id
+      personId: person.id
     });
 
     expect(person.name).toEqual('Jojo');
     expect(pet.name).toEqual('Koko');
     expect(person.age).toEqual(3);
-    expect(pet.customerId).toEqual(person.id);
+    expect(pet.personId).toEqual(person.id);
   });
 
   test('Should be able to fetch a person and include all orders', async () => {
