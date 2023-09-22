@@ -65,37 +65,37 @@ describe('Testing the REST Router', () => {
 });
 
 describe('Testing the REST Router', () => {
-  test('Should READ car', async () => {
-    let response = await request.get('/api/car');
+  test('Should READ person', async () => {
+    let response = await request.get('/api/person');
 
     expect(response.status).toEqual(200);
     expect(response.body.results).toBeTruthy();
   });
 
-  test('Should CREATE car', async () => {
-    let response = await request.post('/api/car').send({
-      name: 'Tesla',
-      type: 'Model Y',
+  test('Should CREATE person', async () => {
+    let response = await request.post('/api/person').send({
+      name: 'Chester',
+      age: 100,
     });
 
     expect(response.status).toEqual(200);
     expect(response.body.name).toEqual('Tesla');
-    expect(response.body.type).toEqual('Model Y');
+    expect(response.body.age).toEqual(100);
   });
 
-  test('Should UPDATE car', async () => {
-    let response = await request.put('/api/car/1').send({
+  test('Should UPDATE person', async () => {
+    let response = await request.put('/api/person/1').send({
       name: 'Toyota',
-      type: 'Corolla',
+      age: 50,
     });
 
     expect(response.status).toEqual(200);
     expect(response.body.name).toEqual('Toyota');
-    expect(response.body.type).toEqual('Corolla');
+    expect(response.body.age).toEqual(50);
   });
 
-  test('Should DELETE car', async () => {
-    let response = await request.delete('/api/car/1');
+  test('Should DELETE person', async () => {
+    let response = await request.delete('/api/person/1');
 
     expect(response.status).toEqual(204);
   });
