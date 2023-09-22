@@ -19,13 +19,17 @@ Send a request:
 
 ```text
 method: GET || POST || PUT || DELETE
-route: /api/pet || /api/pet/:id || /api/car || /api/car/:id
+route: /api/pet || /api/pet/:id || /api/person || /api/person/:id
 query:
-  name={name_of_car || name_of_pet}
-  type={model_of_car || breed_of_pet}
+  name={name_of_person} //for person
+  age={age_of_person} //for person
+  
+  name={name_of_pet} //for pet
+  personId={person_id} //for pet
 ```
 
 ## UML Diagram
+![Basic Express Server UML Diagram](./assets/401-class-03-lab.png)
 ![Basic Express Server UML Diagram](./assets/401-class-03-lab.png)
 
 ## Deployed link
