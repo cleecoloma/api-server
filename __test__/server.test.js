@@ -14,41 +14,45 @@ afterAll(async () => {
 });
 
 describe('Testing the REST Router', () => {
-  /* NEED TO WORK ON */
-  // test('Should READ pet', async () => {
-  //   let response = await request.get('/api/pet');
+  test('Should READ pet', async () => {
+    let response = await request.get('/api/pet');
 
-  //   expect(response.status).toEqual(200);
-  //   expect(response.body.results).toBeTruthy();
-  // });
+    expect(response.status).toEqual(200);
+    expect(response.body.results).toBeTruthy();
+  });
 
-  // test('Should CREATE pet', async () => {
-  //   let response = await request.post('/api/pet').send({
-  //     name: 'Koko',
-  //     customerId: 1,
-  //   });
+  test('Should CREATE pet', async () => {
+    let responsePerson = await request.post('/api/person').send({
+      name: 'Chester',
+      age: 100,
+    });
 
-  //   expect(response.status).toEqual(200);
-  //   expect(response.body.name).toEqual('Koko');
-  //   expect(response.body.customerId).toEqual(1);
-  // });
+    let response = await request.post('/api/pet').send({
+      name: 'Koko',
+      personId: 1,
+    });
 
-  // test('Should UPDATE pet', async () => {
-  //   let response = await request.put('/api/pet/1').send({
-  //     name: 'Jojo',
-  //     customerId: 2,
-  //   });
+    expect(response.status).toEqual(200);
+    expect(response.body.name).toEqual('Koko');
+    expect(response.body.personId).toEqual(1);
+  });
 
-  //   expect(response.status).toEqual(200);
-  //   expect(response.body.name).toEqual('Jojo');
-  //   expect(response.body.customerId).toEqual(2);
-  // });
+  test('Should UPDATE pet', async () => {
+  let response = await request.put('/api/pet/1').send({
+      name: 'Jojo',
+      personId: 1,
+    });
 
-  // test('Should DELETE pet', async () => {
-  //   let response = await request.delete('/api/pet');
+    expect(response.status).toEqual(200);
+    expect(response.body.name).toEqual('Jojo');
+    expect(response.body.personId).toEqual(1);
+  });
 
-  //   expect(response.status).toEqual(200);
-  // });
+  test('Should DELETE pet', async () => {
+    let response = await request.delete('/api/pet/1');
+
+    expect(response.status).toEqual(200);
+  });
 });
 
 describe('Testing the REST Router', () => {
